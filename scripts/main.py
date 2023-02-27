@@ -182,7 +182,7 @@ class Main(SettingsManager, scripts.Script):
             p.extra_generation_params = {
                 "Model": model,
                 "NSFW": nsfw,
-                "clip_skip": shared.opts.CLIP_stop_at_last_layers,
+                "clip_skip": shared.opts.CLIP_stop_at_last_layer,
                 "Share with LAION": self.api_key == "0000000000" or shared_laion if not self.is_img2img else None,
                 "Seed variation": seed_variation if p.batch_size > 1 else None,
                 "Post processing 1": (post_processing[0] if len(post_processing) >= 1 else None),
@@ -382,7 +382,9 @@ class Main(SettingsManager, scripts.Script):
                 "steps": p.steps,
                 "n": p.batch_size
             },
-            "r2": False
+            "r2": False,
+            "clip_skip": p.extra_generation_params["clip_skip"],
+            "hires_fix": p.enable_hr
         }
         self.load_settings()
         if p.batch_size > 1:
