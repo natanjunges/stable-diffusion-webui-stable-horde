@@ -379,11 +379,11 @@ class Main(SettingsManager, scripts.Script):
                 "height": p.height,
                 "width": p.width,
                 "steps": p.steps,
-                "n": p.batch_size
+                "n": p.batch_size,
+                "clip_skip": p.extra_generation_params["clip_skip"],
+                "hires_fix": p.enable_hr
             },
-            "r2": False,
-            "clip_skip": p.extra_generation_params["clip_skip"],
-            "hires_fix": p.enable_hr
+            "r2": False
         }
         self.load_settings()
         if p.batch_size > 1:
