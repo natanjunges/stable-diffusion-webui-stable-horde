@@ -178,7 +178,7 @@ class Main(SettingsManager, scripts.Script):
         try:
             for k, v in p.override_settings.items():
                 setattr(shared.opts, k, v)
-            print (f"Value of p = {p}")
+            print (f"Value of p = {vars(p)}")
             p.extra_generation_params = {
                 "Model": model,
                 "NSFW": nsfw,
@@ -385,7 +385,6 @@ class Main(SettingsManager, scripts.Script):
             "r2": False
         }
         self.load_settings()
-        print(payload)
         if p.batch_size > 1:
             payload["params"]["seed_variation"] = seed_variation
 
