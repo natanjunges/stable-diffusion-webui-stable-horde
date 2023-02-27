@@ -178,11 +178,10 @@ class Main(SettingsManager, scripts.Script):
         try:
             for k, v in p.override_settings.items():
                 setattr(shared.opts, k, v)
-            print (f"Value of p = {vars(shared.opts)}")
             p.extra_generation_params = {
                 "Model": model,
                 "NSFW": nsfw,
-                "clip_skip": shared.opts.CLIP_stop_at_last_layer,
+                "clip_skip": shared.opts.CLIP_stop_at_last_layers,
                 "Share with LAION": self.api_key == "0000000000" or shared_laion if not self.is_img2img else None,
                 "Seed variation": seed_variation if p.batch_size > 1 else None,
                 "Post processing 1": (post_processing[0] if len(post_processing) >= 1 else None),
