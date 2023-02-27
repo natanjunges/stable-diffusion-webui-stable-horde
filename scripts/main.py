@@ -178,7 +178,7 @@ class Main(SettingsManager, scripts.Script):
         try:
             for k, v in p.override_settings.items():
                 setattr(shared.opts, k, v)
-            print (f"Value of p = {vars(p)}")
+            print (f"Value of p = {vars(stored_opts)}")
             p.extra_generation_params = {
                 "Model": model,
                 "NSFW": nsfw,
