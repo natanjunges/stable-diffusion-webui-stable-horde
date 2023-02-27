@@ -444,6 +444,7 @@ class Main(SettingsManager, scripts.Script):
             return (None, None)
 
         try:
+            print(payload)
             session = requests.Session()
             id = session.post("{}/v2/generate/async".format(self.api_endpoint), headers={"apikey": self.api_key, "Client-Agent": self.CLIENT_AGENT}, json=payload)
             assert id.status_code == 202, "Status Code: {} (expected {})".format(id.status_code, 202)
